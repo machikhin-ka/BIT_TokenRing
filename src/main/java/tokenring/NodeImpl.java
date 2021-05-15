@@ -16,12 +16,7 @@ public class NodeImpl implements Node {
 
 	@Override
 	public void receive(Token token) throws InterruptedException {
-		if (token.getRecipientId() == id) {
-			token.setSendingStamp(System.nanoTime());
-		}
-		if (token.getSenderId() == id) {
-			tokenHandler.accept(token); //latency
-		}
+		tokenHandler.accept(token);
 		nextMedium.push(token);
 	}
 

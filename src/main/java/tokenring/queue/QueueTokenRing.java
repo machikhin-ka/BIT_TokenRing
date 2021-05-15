@@ -5,7 +5,6 @@ import tokenring.consumers.LatencyConsumerDecorator;
 import tokenring.consumers.ThroughputConsumerDecorator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -15,7 +14,6 @@ public class QueueTokenRing implements TokenRing {
 	private final List<Medium> mediums;
 	private final List<Node> nodes;
 	private final List<Thread> nodeThreads;
-	private final List<Long> latencies = Collections.synchronizedList(new ArrayList<>());
 	private final Consumer<Token> consumer;
 	private int tokenCount;
 
@@ -83,8 +81,7 @@ public class QueueTokenRing implements TokenRing {
 	public void sendToken() {
 		try {
 			int from = tokenCount;
-			int to = (tokenCount + mediums.size() - 1) % mediums.size();
-			mediums.get(from).push(new Token(from, to));
+			mediums.get(from).push(new Token());
 			tokenCount = (tokenCount + 1) % mediums.size();
 		} catch (InterruptedException ignore) {
 		}

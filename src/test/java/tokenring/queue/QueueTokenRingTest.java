@@ -7,8 +7,8 @@ import java.util.Arrays;
 class QueueTokenRingTest {
 	@Test
 	public void test() throws InterruptedException {
-		QueueTokenRing tokenRing = new QueueTokenRing(3, 3, x -> { });
-		tokenRing.sendTokens(2);
+		QueueTokenRing tokenRing = new QueueTokenRing(4, 10, x -> { });
+		tokenRing.sendTokens(38);
 		tokenRing.start();
 		Thread.sleep(15000);
 		tokenRing.stop();
