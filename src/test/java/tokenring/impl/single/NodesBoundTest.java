@@ -32,8 +32,8 @@ class NodesBoundTest {
 
     @Test
     void latenciesAndThroughputForNodesSize() throws InterruptedException {
-        StringBuilder sbLatency = new StringBuilder();
-        StringBuilder sbThroughput = new StringBuilder();
+        StringBuilder sbLatency = new StringBuilder("nodes,latency\n");
+        StringBuilder sbThroughput = new StringBuilder("nodes,throughput\n");
 
         for (int size = 2; size <= 8; size++) {
             Load[] relativeLoads = getRelativeLoads(size);

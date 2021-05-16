@@ -41,8 +41,8 @@ class QueueTokenRingTest {
 
     @Test
     public void testForCompareWithSingle() throws InterruptedException {
-        StringBuilder sbLatency = new StringBuilder("node_size,load,latency\n");
-        StringBuilder sbThroughput = new StringBuilder("node_size,load,throughput\n");
+        StringBuilder sbLatency = new StringBuilder("nodes,latency\n");
+        StringBuilder sbThroughput = new StringBuilder("nodes,throughput\n");
 
         for (int size = 2; size < 5; size++) {
             Load[] relativeLoads = getRelativeLoads(size);
@@ -113,7 +113,7 @@ class QueueTokenRingTest {
 
     private void addData(StringBuilder sb, int arg1, Load.LoadLevel arg2, long[] data) {
         for (long d : data) {
-            sb.append(arg1).append(",")
+            sb.append(arg1)
                     .append(arg2).append(",")
                     .append(d).append("\n");
         }
