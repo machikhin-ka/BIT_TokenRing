@@ -1,9 +1,9 @@
-package tokenring.single;
+package tokenring.impl.single;
 
 import tokenring.Medium;
 import tokenring.Token;
 import tokenring.TokenRing;
-import tokenring.TokenRingImpl;
+import tokenring.impl.TokenRingImpl;
 
 import java.util.List;
 import java.util.function.Consumer;

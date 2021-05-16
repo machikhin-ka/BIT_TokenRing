@@ -1,4 +1,4 @@
-package tokenring.consumers;
+package tokenring.impl.consumers;
 
 import tokenring.Token;
 

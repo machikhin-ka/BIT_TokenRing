@@ -1,11 +1,11 @@
-package tokenring.consumers;
+package tokenring.impl.consumers;
 
 import tokenring.Token;
 
 import java.util.function.Consumer;
 
 public class ThroughputConsumerDecorator implements Consumer<Token> {
-	private final int size = 11;
+	private final int size = 10;
 	private final long[] throughputs = new long[size];
 	private final Consumer<Token> consumer;
 	private int throughputCount;

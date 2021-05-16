@@ -1,4 +1,8 @@
-package tokenring;
+package tokenring.impl;
+
+import tokenring.Medium;
+import tokenring.Node;
+import tokenring.Token;
 
 import java.util.function.Consumer;
 

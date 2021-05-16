@@ -1,4 +1,4 @@
-package tokenring.single;
+package tokenring.impl.single;
 
 import tokenring.Medium;
 import tokenring.Token;

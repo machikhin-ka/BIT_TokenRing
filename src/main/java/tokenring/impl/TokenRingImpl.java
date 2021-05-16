@@ -1,7 +1,8 @@
-package tokenring;
+package tokenring.impl;
 
-import tokenring.consumers.LatencyConsumerDecorator;
-import tokenring.consumers.ThroughputConsumerDecorator;
+import tokenring.*;
+import tokenring.impl.consumers.LatencyConsumerDecorator;
+import tokenring.impl.consumers.ThroughputConsumerDecorator;
 
 import java.util.ArrayList;
 import java.util.List;

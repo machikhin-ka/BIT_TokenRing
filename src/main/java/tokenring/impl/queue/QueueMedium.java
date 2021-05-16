@@ -1,4 +1,4 @@
-package tokenring.queue;
+package tokenring.impl.queue;
 
 import tokenring.Medium;
 import tokenring.Token;

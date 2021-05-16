@@ -1,4 +1,8 @@
-package tokenring;
+package tokenring.impl;
+
+import tokenring.Medium;
+import tokenring.Node;
+import tokenring.Token;
 
 public class NodeRunnable implements Runnable {
 	private final Node node;
