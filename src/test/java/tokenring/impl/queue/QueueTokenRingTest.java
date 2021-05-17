@@ -19,13 +19,13 @@ class QueueTokenRingTest {
     private static final Path pathCompareThroughput =
             Path.of("src", "test", "resources", "queue", "ThroughputCompareWithSingle.csv");
     private static final Path pathCapacityRelativeLatency =
-            Path.of("src", "test", "resources", "queue", "LatencyRelativeCapacityWithSingle.csv");
+            Path.of("src", "test", "resources", "queue", "LatencyRelativeCapacity.csv");
     private static final Path pathCapacityRelativeThroughput =
-            Path.of("src", "test", "resources", "queue", "ThroughputRelativeCapacityWithSingle.csv");
+            Path.of("src", "test", "resources", "queue", "ThroughputRelativeCapacity.csv");
     private static final Path pathCapacityAbsoluteLatency =
-            Path.of("src", "test", "resources", "queue", "LatencyAbsoluteCapacityWithSingle.csv");
+            Path.of("src", "test", "resources", "queue", "LatencyAbsoluteCapacity.csv");
     private static final Path pathCapacityAbsoluteThroughput =
-            Path.of("src", "test", "resources", "queue", "ThroughputAbsoluteCapacityWithSingle.csv");
+            Path.of("src", "test", "resources", "queue", "ThroughputAbsoluteCapacity.csv");
     private final static Consumer<Token> empty = x -> {
     };
 
