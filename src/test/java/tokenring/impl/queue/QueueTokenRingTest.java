@@ -128,10 +128,9 @@ class QueueTokenRingTest {
     }
 
     private void addData(StringBuilder sb, int arg1, int arg2, Load.LoadLevel relativeLoad, long[] data) {
-        String prefix = arg1 + "," + arg2 + ",";
+        String prefix = arg1 + "|" + arg2 + "|" + relativeLoad + ",";
         for (long d : data) {
             sb.append(prefix)
-                    .append(relativeLoad).append(",")
                     .append(d).append("\n");
         }
     }
