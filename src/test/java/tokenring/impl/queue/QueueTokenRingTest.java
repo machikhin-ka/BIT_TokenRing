@@ -35,7 +35,7 @@ class QueueTokenRingTest {
         TokenRing tokenRing = new QueueTokenRing(2, 1, empty);
         tokenRing.sendTokens(2);
         tokenRing.start();
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         tokenRing.stop();
     }
 
@@ -89,12 +89,12 @@ class QueueTokenRingTest {
 
     @Test
     public void testAbsoluteLoadWithDifferentCapacity() throws InterruptedException {
-        StringBuilder sbLatency = new StringBuilder("capacity,tokenNum,latency\n");
-        StringBuilder sbThroughput = new StringBuilder("capacity,tokenNum,throughput\n");
+        StringBuilder sbLatency = new StringBuilder("capacity|tokenNum,latency\n");
+        StringBuilder sbThroughput = new StringBuilder("capacity|tokenNum,throughput\n");
         int size = 4;
-        
+
         for (int capacity : List.of(5, 10, 15)) {
-            for (int tokenNum : List.of(10, 20, 30, 40, 50)) {
+            for (int tokenNum : List.of(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60)) {
                 if (capacity * size < tokenNum) break;
                 TokenRing tokenRing = new QueueTokenRing(size, capacity, empty);
                 tokenRing.sendTokens(tokenNum);
@@ -120,9 +120,9 @@ class QueueTokenRingTest {
     }
 
     private void addData(StringBuilder sb, int arg1, int arg2, long[] data) {
+        String prefix = arg1 + "|" + arg2 + ",";
         for (long d : data) {
-            sb.append(arg1).append(",")
-                    .append(arg2).append(",")
+            sb.append(prefix)
                     .append(d).append("\n");
         }
     }
