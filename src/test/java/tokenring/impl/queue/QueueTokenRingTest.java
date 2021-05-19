@@ -94,7 +94,7 @@ class QueueTokenRingTest {
         int size = 4;
 
         for (int capacity : List.of(5, 10, 15)) {
-            for (int tokenNum : List.of(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60)) {
+            for (int tokenNum : List.of(5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60)) {
                 if (capacity * size < tokenNum) break;
                 TokenRing tokenRing = new QueueTokenRing(size, capacity, empty);
                 tokenRing.sendTokens(tokenNum);
