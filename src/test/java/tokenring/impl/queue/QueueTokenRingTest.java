@@ -23,9 +23,9 @@ class QueueTokenRingTest {
     private static final Path pathCapacityRelativeThroughput =
             Path.of("src", "test", "resources", "queue", "ThroughputRelativeCapacity.csv");
     private static final Path pathCapacityAbsoluteLatency =
-            Path.of("src", "test", "resources", "queue", "LatencyAbsoluteCapacity.csv");
+            Path.of("src", "test", "resources", "queue", "LatencyAbsoluteCapacity1.csv");
     private static final Path pathCapacityAbsoluteThroughput =
-            Path.of("src", "test", "resources", "queue", "ThroughputAbsoluteCapacity.csv");
+            Path.of("src", "test", "resources", "queue", "ThroughputAbsoluteCapacity1.csv");
     private final static Consumer<Token> empty = x -> {
     };
 
@@ -93,8 +93,8 @@ class QueueTokenRingTest {
         StringBuilder sbThroughput = new StringBuilder("capacity|tokenNum,throughput\n");
         int size = 4;
 
-        for (int capacity : List.of(5, 10, 15)) {
-            for (int tokenNum : List.of(5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60)) {
+        for (int capacity : List.of(100, 200)) {
+            for (int tokenNum : List.of(5, 35, 65, 95, 125, 155, 185, 215)) {
                 if (capacity * size < tokenNum) break;
                 TokenRing tokenRing = new QueueTokenRing(size, capacity, empty);
                 tokenRing.sendTokens(tokenNum);
