@@ -23,9 +23,9 @@ class QueueTokenRingTest {
     private static final Path pathCapacityRelativeThroughput =
             Path.of("src", "test", "resources", "queue", "ThroughputRelativeCapacity.csv");
     private static final Path pathCapacityAbsoluteLatency =
-            Path.of("src", "test", "resources", "queue", "LatencyAbsoluteCapacity1.csv");
+            Path.of("src", "test", "resources", "queue", "LatencyAbsoluteCapacity2.csv");
     private static final Path pathCapacityAbsoluteThroughput =
-            Path.of("src", "test", "resources", "queue", "ThroughputAbsoluteCapacity1.csv");
+            Path.of("src", "test", "resources", "queue", "ThroughputAbsoluteCapacity2.csv");
     private final static Consumer<Token> empty = x -> {
     };
 
