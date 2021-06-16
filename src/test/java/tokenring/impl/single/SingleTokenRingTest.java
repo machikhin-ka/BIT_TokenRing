@@ -40,8 +40,8 @@ class SingleTokenRingTest {
         StringBuilder sbLatency = new StringBuilder("numOfToken,latency\n");
         StringBuilder sbThroughput = new StringBuilder("numOfToken,load,throughput\n");
 
-        for (int numOfToken : List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) {
-            TokenRing tokenRing = new SingleTokenRing(10, empty);
+        for (int numOfToken : List.of(1, 2, 3, 4, 5, 6, 7, 8)) {
+            TokenRing tokenRing = new SingleTokenRing(8, empty);
             tokenRing.sendTokens(numOfToken);
             tokenRing.start();
             Thread.sleep(13000);
