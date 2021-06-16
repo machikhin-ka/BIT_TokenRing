@@ -44,7 +44,30 @@ class QueueTokenRingTest {
         StringBuilder sbLatency = new StringBuilder("nodes,latency\n");
         StringBuilder sbThroughput = new StringBuilder("nodes,throughput\n");
 
-        for (int size = 2; size < 5; size++) {
+        for (int size = 2; size < 5; size++) { //todo 8 and 16, 24 (32)
+            Load[] relativeLoads = getRelativeLoads(size);
+            for (Load load : relativeLoads) {
+                TokenRing tokenRing = new QueueTokenRing(size, 2, empty);
+                tokenRing.sendTokens(load.getLength());
+                tokenRing.start();
+                Thread.sleep(11000);
+                tokenRing.stop();
+                long[] latencies = tokenRing.getLatencies();
+                long[] throughput = tokenRing.getThroughput();
+                addData(sbLatency, size, load.getRelativeLoad(), latencies);
+                addData(sbThroughput, size, load.getRelativeLoad(), throughput);
+            }
+            createFile(sbLatency, pathCompareLatency);
+            createFile(sbThroughput, pathCompareThroughput);
+        }
+    }
+
+    @Test
+    public void additionTestForCompareWithSingle() throws InterruptedException {
+        StringBuilder sbLatency = new StringBuilder("nodes,latency\n");
+        StringBuilder sbThroughput = new StringBuilder("nodes,throughput\n");
+
+        for (int size: List.of(8, 16, 24)) { //todo 8 and 16, 24 (32)
             Load[] relativeLoads = getRelativeLoads(size);
             for (Load load : relativeLoads) {
                 TokenRing tokenRing = new QueueTokenRing(size, 2, empty);
