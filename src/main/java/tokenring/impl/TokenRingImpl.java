@@ -27,13 +27,13 @@ public class TokenRingImpl implements TokenRing {
 		List<Node> nodes = new ArrayList<>(mediums.size());
 		for (int i = 0; i < mediums.size(); i++) {
 			int nextId = (i + 1) % mediums.size();
-			nodes.add(new NodeImpl(i, consumer, mediums.get(nextId)));
+			nodes.add(new NodeImpl(i, t -> {}, mediums.get(nextId)));
 		}
 		Node node = nodes.get(0);
-		Consumer<Token> consumer = node.getConsumer();
-		node.setConsumer(new LatencyConsumerDecorator(consumer));
+//		Consumer<Token> consumer = node.getConsumer();
+		node.setConsumer(new LatencyConsumerDecorator(t -> {}/*consumer*/));
 		node = nodes.get(nodes.size() - 1);
-		consumer = node.getConsumer();
+//		consumer = node.getConsumer();
 		node.setConsumer(new ThroughputConsumerDecorator(consumer));
 		return nodes;
 	}
