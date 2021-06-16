@@ -18,6 +18,10 @@ class SingleTokenRingTest {
             Path.of("src", "test", "resources", "single", "LatencyForNodesSizeWithLoad.csv");
     private static final Path pathThroughput =
             Path.of("src", "test", "resources", "single", "ThroughputForNodesSizeWithLoad.csv");
+    private static final Path pathLatencyNumOfToken =
+            Path.of("src", "test", "resources", "single", "LatencyNumOfToken.csv");
+    private static final Path pathThroughputNumOfToken =
+            Path.of("src", "test", "resources", "single", "ThroughputNumOfToken.csv");
     private final static Consumer<Token> empty = x -> {
     };
 
@@ -29,6 +33,32 @@ class SingleTokenRingTest {
         tokenRing.start();
         Thread.sleep(2000);
         tokenRing.stop();
+    }
+
+    @Test
+    void latencyAndThroughputDependsInNumberOfToken() throws InterruptedException {
+        StringBuilder sbLatency = new StringBuilder("numOfToken,latency\n");
+        StringBuilder sbThroughput = new StringBuilder("numOfToken,load,throughput\n");
+
+        for (int numOfToken : List.of(1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16)) {
+            TokenRing tokenRing = new SingleTokenRing(16, empty);
+            tokenRing.sendTokens(numOfToken);
+            tokenRing.start();
+            Thread.sleep(13000);
+            tokenRing.stop();
+            long[] latencies = tokenRing.getLatencies();
+            long[] throughput = tokenRing.getThroughput();
+            addDataForNumToken(sbLatency, latencies, numOfToken);
+            addDataForNumToken(sbThroughput, throughput, numOfToken);
+        }
+        createFile(sbLatency, pathLatencyNumOfToken);
+        createFile(sbThroughput, pathThroughputNumOfToken);
+    }
+
+    private void addDataForNumToken(StringBuilder sb, long[] data, int numOfToken) {
+        for (long d : data) {
+            sb.append(numOfToken).append(",").append(d).append("\n");
+        }
     }
 
     @Test
